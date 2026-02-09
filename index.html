@@ -460,6 +460,44 @@
             .temp-large {
                 font-size: 3em;
             }
+            let wakeLock = null;
+
+// Function to request the screen stay on
+async function requestWakeLock() {
+    if (!('wakeLock' in navigator)) {
+        console.log('Wake Lock API not supported by this browser.');
+        return;
+    }
+    
+    try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Screen Wake Lock is active!');
+        
+        // If the app is minimized and then reopened, re-request the lock
+        wakeLock.addEventListener('release', () => {
+            console.log('Wake Lock was released');
+        });
+    } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+    }
+}
+
+// Check the setting and activate if enabled
+function handleWakeLock() {
+    const shouldKeepOn = document.getElementById('keepScreenOn').checked;
+    if (shouldKeepOn) {
+        requestWakeLock();
+    } else if (wakeLock) {
+        wakeLock.release();
+        wakeLock = null;
+    }
+    window.addEventListener('load', () => {
+    // ... existing code ...
+    if (keepScreenOn) {
+        requestWakeLock();
+    }
+});
+}
         }
     </style>
 </head>
