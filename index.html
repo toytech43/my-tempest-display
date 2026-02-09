@@ -279,7 +279,7 @@
 
             updateDateTime();
             setInterval(updateDateTime, 60000);
-            setInterval(fetchStationData, 300000); // 5 mins
+            setInterval(fetchStationData, 120000); // 5 mins
             setInterval(fetchForecast, 3600000);   // 1 hour
 
             if ('serviceWorker' in navigator) {
@@ -452,4 +452,5 @@
         }
     </script>
 </body>
+
 </html>
