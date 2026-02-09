@@ -496,6 +496,18 @@ function handleWakeLock() {
     if (keepScreenOn) {
         requestWakeLock();
     }
+        window.addEventListener('load', () => {
+    // ... your existing load code ...
+    
+    // Refresh the full weather data every 5 minutes
+    setInterval(() => {
+        fetchStationData();
+    }, 300000); // 300,000ms = 5 minutes
+});
+            // Add this to your load listener to update forecast every hour
+setInterval(() => {
+    fetchForecast();
+}, 3600000); // 1 hour
 });
 }
         }
