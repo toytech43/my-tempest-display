@@ -465,6 +465,240 @@
             display: none;
         }
 
+        /* Landscape tablets and smaller desktops */
+        @media (max-height: 800px) {
+            .frame {
+                padding: 10px;
+            }
+
+            .display {
+                padding: 15px;
+            }
+
+            .header {
+                margin-bottom: 10px;
+                padding-bottom: 8px;
+            }
+
+            .main-section {
+                gap: 15px;
+                margin-bottom: 10px;
+            }
+
+            .weather-icon {
+                font-size: 60px;
+            }
+
+            .temp-large {
+                font-size: 3em;
+            }
+
+            .conditions-grid {
+                gap: 8px;
+            }
+
+            .condition-item {
+                gap: 3px;
+            }
+
+            .condition-icon {
+                font-size: 1.2em;
+            }
+
+            .condition-label {
+                font-size: 0.7em;
+            }
+
+            .condition-value {
+                font-size: 1.1em;
+            }
+
+            .hourly-section {
+                margin-top: 10px;
+                padding-top: 10px;
+            }
+
+            .hourly-title {
+                margin-bottom: 8px;
+                font-size: 0.75em;
+            }
+
+            .hour-item {
+                gap: 5px;
+                min-width: 50px;
+            }
+
+            .hour-time {
+                font-size: 0.7em;
+            }
+
+            .hour-icon {
+                font-size: 1.5em;
+            }
+
+            .hour-temp {
+                font-size: 0.9em;
+            }
+
+            .forecast-section {
+                margin-top: 10px;
+                padding-top: 10px;
+            }
+
+            .forecast-title {
+                margin-bottom: 8px;
+                font-size: 0.75em;
+            }
+
+            .day-item {
+                padding: 8px;
+                gap: 5px;
+            }
+
+            .feels-like {
+                font-size: 0.95em;
+            }
+
+            .high-low {
+                font-size: 1.1em;
+            }
+        }
+
+        /* Very compact for short screens (landscape phones, small tablets) */
+        @media (max-height: 600px) {
+            .frame {
+                padding: 5px;
+            }
+
+            .display {
+                padding: 10px;
+            }
+
+            .header {
+                margin-bottom: 5px;
+                padding-bottom: 5px;
+            }
+
+            .date-time {
+                font-size: 0.8em;
+            }
+
+            .last-update {
+                font-size: 0.65em;
+            }
+
+            .settings-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1em;
+            }
+
+            .main-section {
+                gap: 10px;
+                margin-bottom: 8px;
+            }
+
+            .weather-icon {
+                font-size: 50px;
+            }
+
+            .temp-large {
+                font-size: 2.5em;
+            }
+
+            .temp-unit {
+                font-size: 1.5em;
+            }
+
+            .feels-like {
+                font-size: 0.8em;
+                margin-top: 3px;
+            }
+
+            .high-low {
+                font-size: 0.9em;
+                margin-top: 3px;
+            }
+
+            .conditions-grid {
+                gap: 6px;
+            }
+
+            .condition-item {
+                gap: 2px;
+            }
+
+            .condition-icon {
+                font-size: 1em;
+            }
+
+            .condition-label {
+                font-size: 0.65em;
+            }
+
+            .condition-value {
+                font-size: 0.95em;
+            }
+
+            .hourly-section {
+                margin-top: 8px;
+                padding-top: 8px;
+            }
+
+            .hourly-title {
+                margin-bottom: 5px;
+                font-size: 0.7em;
+            }
+
+            .hour-item {
+                gap: 3px;
+                min-width: 45px;
+            }
+
+            .hour-time {
+                font-size: 0.65em;
+            }
+
+            .hour-icon {
+                font-size: 1.3em;
+            }
+
+            .hour-temp {
+                font-size: 0.8em;
+            }
+
+            .forecast-section {
+                margin-top: 8px;
+                padding-top: 8px;
+            }
+
+            .forecast-title {
+                margin-bottom: 5px;
+                font-size: 0.7em;
+            }
+
+            .day-item {
+                padding: 5px;
+                gap: 3px;
+            }
+        }
+
+        /* Landscape orientation optimization */
+        @media (orientation: landscape) and (max-height: 900px) {
+            .current-weather {
+                gap: 15px;
+            }
+            
+            .hourly-scroll {
+                gap: 10px;
+                padding-bottom: 5px;
+            }
+            
+            .forecast-days {
+                gap: 8px;
+            }
+        }
+
         @media (max-width: 768px) {
             .main-section {
                 grid-template-columns: 1fr;
