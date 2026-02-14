@@ -245,7 +245,7 @@
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid #e0e0dc;
-            flex: 1;
+            flex: 1 1 auto;
             display: flex;
             flex-direction: column;
             min-height: 0;
@@ -543,6 +543,7 @@
             .forecast-section {
                 margin-top: 10px;
                 padding-top: 10px;
+                flex: 0.6 1 auto;
             }
 
             .forecast-title {
@@ -670,6 +671,7 @@
             .forecast-section {
                 margin-top: 8px;
                 padding-top: 8px;
+                flex: 0.4 1 auto;
             }
 
             .forecast-title {
@@ -696,6 +698,34 @@
             
             .forecast-days {
                 gap: 8px;
+            }
+            
+            /* Limit forecast section growth in landscape */
+            .forecast-section {
+                flex: 0.5;
+                min-height: 100px;
+            }
+            
+            /* Give more space to main data section */
+            .main-section {
+                flex-shrink: 0;
+            }
+            
+            .hourly-section {
+                flex-shrink: 0;
+            }
+        }
+
+        /* Even more constrained for very short landscape screens */
+        @media (orientation: landscape) and (max-height: 700px) {
+            .forecast-section {
+                flex: 0.3;
+                min-height: 80px;
+            }
+            
+            /* Make forecast items even more compact */
+            .day-item {
+                padding: 4px;
             }
         }
 
