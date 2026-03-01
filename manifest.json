@@ -1,18 +1,25 @@
-
 {
   "name": "Tempest Weather Display",
   "short_name": "Tempest",
+  "description": "Real-time weather display for Tempest weather station",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#559fe7",
+  "orientation": "any",
+  "background_color": "#4A90E2",
   "theme_color": "#2c3e50",
   "icons": [
     {
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
-
 }
