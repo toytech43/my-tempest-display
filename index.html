@@ -1192,6 +1192,12 @@
             const daily = forecast.forecast.daily;
             const hourly = forecast.forecast.hourly;
 
+            // Use the current (first) hourly entry's icon for the main weather icon
+            // This is the most accurate source — the observations endpoint doesn't include an icon field
+            if (hourly && hourly.length > 0 && hourly[0].icon) {
+                document.getElementById('weatherIcon').textContent = getWeatherIcon(hourly[0].icon);
+            }
+
             // Update hourly forecast
             const hourlyContainer = document.getElementById('hourlyForecast');
             hourlyContainer.innerHTML = '';
@@ -1411,14 +1417,31 @@
             if (obs.icon) {
                 icon = getWeatherIcon(obs.icon);
             } else {
-                // Fallback for WebSocket data (which doesn't include an icon field)
+                // Fallback for WebSocket data (no icon field) — use precip + time of day
+                const now = new Date();
+                const sunriseEl = document.getElementById('sunrise');
+                const sunsetEl = document.getElementById('sunset');
+                let isDay = true;
+
+                // Try to determine if it's day or night from displayed sunrise/sunset
+                try {
+                    const todayStr = now.toDateString();
+                    const sunriseText = sunriseEl.textContent; // e.g. "6:43"
+                    const sunsetText = sunsetEl.textContent;   // e.g. "6:45"
+                    const sunriseTime = new Date(todayStr + ' ' + sunriseText + ' AM');
+                    const sunsetTime = new Date(todayStr + ' ' + sunsetText + ' PM');
+                    isDay = now >= sunriseTime && now <= sunsetTime;
+                } catch(e) {
+                    isDay = now.getHours() >= 6 && now.getHours() < 20;
+                }
+
                 if (obs.precip_type > 0) {
                     icon = '🌧️';
                 } else if (obs.solar_radiation > 800) {
                     icon = '☀️';
-                } else if (obs.solar_radiation > 400) {
+                } else if (obs.solar_radiation > 200) {
                     icon = '⛅';
-                } else if (obs.solar_radiation > 100) {
+                } else if (isDay) {
                     icon = '☁️';
                 } else {
                     icon = '🌙';
