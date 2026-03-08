@@ -1406,19 +1406,25 @@
 
         function updateWeatherIcon(obs) {
             let icon = '🌤️';
-            
-            if (obs.precip_type > 0) {
-                icon = '🌧️';
-            } else if (obs.solar_radiation > 800) {
-                icon = '☀️';
-            } else if (obs.solar_radiation > 400) {
-                icon = '⛅';
-            } else if (obs.solar_radiation > 100) {
-                icon = '☁️';
+
+            // Use the icon field from the REST API if available (most accurate)
+            if (obs.icon) {
+                icon = getWeatherIcon(obs.icon);
             } else {
-                icon = '🌙';
+                // Fallback for WebSocket data (which doesn't include an icon field)
+                if (obs.precip_type > 0) {
+                    icon = '🌧️';
+                } else if (obs.solar_radiation > 800) {
+                    icon = '☀️';
+                } else if (obs.solar_radiation > 400) {
+                    icon = '⛅';
+                } else if (obs.solar_radiation > 100) {
+                    icon = '☁️';
+                } else {
+                    icon = '🌙';
+                }
             }
-            
+
             document.getElementById('weatherIcon').textContent = icon;
         }
 
