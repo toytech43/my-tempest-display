@@ -1198,6 +1198,18 @@
                 document.getElementById('weatherIcon').textContent = getWeatherIcon(hourly[0].icon);
             }
 
+            // Update visibility and air quality from current hourly slot
+            if (hourly && hourly.length > 0) {
+                const current = hourly[0];
+                if (current.local_visibility != null) {
+                    const visMiles = current.local_visibility * 0.621371;
+                    document.getElementById("visibility").textContent = visMiles >= 24 ? ">24" : visMiles.toFixed(1);
+                }
+                if (current.local_air_quality_index != null) {
+                    document.getElementById("airQuality").textContent = Math.round(current.local_air_quality_index);
+                }
+            }
+
             // Update hourly forecast
             const hourlyContainer = document.getElementById('hourlyForecast');
             hourlyContainer.innerHTML = '';
